@@ -84,3 +84,16 @@ listaCircular LCRotar(listaCircular LC){
     
     return LC;
 }
+
+bool pertenece(listaCircular LC, item dato){
+    Nodo* aux = LC.cabecera->siguiente;
+    for (int i = 1; i < LC.longitud; i++)
+    {
+        if(aux->dato == dato)
+        {
+            return true;
+        }
+        aux = aux->siguiente;
+    }
+    return false;
+}

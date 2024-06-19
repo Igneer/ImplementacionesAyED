@@ -16,7 +16,7 @@ struct Pila
     Nodo* cabecera;
 };
 
-Pila pilaVacia(){
+Pila pilaVacia(){ // O(1)
     Pila P;
     P.longitud = 0;
     P.cabecera = NULL;
@@ -24,7 +24,7 @@ Pila pilaVacia(){
     return P;
 }
 
-Pila push(Pila P, item Aponer)
+Pila push(Pila P, item Aponer) // O(1)
 {
     Nodo* nuevo = new Nodo;
     nuevo->dato = Aponer;
@@ -37,7 +37,7 @@ Pila push(Pila P, item Aponer)
     return P;
 }
 
-bool esPilaVacia(Pila P)
+bool esPilaVacia(Pila P) // O(1)
 {
     if(P.cabecera)
     {
@@ -48,7 +48,7 @@ bool esPilaVacia(Pila P)
     }
 }
 
-Pila pop(Pila P){
+Pila pop(Pila P){ // O(1)
     if(P.cabecera != NULL)
     {
         Nodo* aux;
@@ -61,7 +61,7 @@ Pila pop(Pila P){
     return P;
 }
 
-item top(Pila P){
+item top(Pila P){ // O(1)
     if (P.cabecera != NULL)
     {
         return P.cabecera->dato;
@@ -70,12 +70,12 @@ item top(Pila P){
     }
 }
 
-int altura(Pila P)
+int altura(Pila P) // O(1)
 {
     return P.longitud;
 }
 
-void mostrarPila(Pila P){
+void mostrarPila(Pila P){ // O(n), siendo n la cantidad de elementos que tiene la pila
     Nodo* aux;
     aux = P.cabecera;
     int longitud = P.longitud; 
@@ -85,4 +85,17 @@ void mostrarPila(Pila P){
         aux = aux->siguiente;
         longitud--;
     }
+}
+
+bool pertenece(Pila P, item dato){ // O(n), siendo n la cantidad de elementos que tiene la pila
+    Nodo* aux = P.cabecera;
+    for (int i = 1; i < P.longitud; i++)
+    {
+        if(aux->dato == dato)
+        {
+            return true;
+        }
+        aux = aux->siguiente;
+    }
+    return false;
 }
