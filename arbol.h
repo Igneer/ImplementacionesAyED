@@ -58,9 +58,15 @@ item raiz(Arbol AB){
     }    
 }
 
-// bool pertenece(Arbol AB){
-//     if (/* condition */)
-//     {
-//         /* code */
-//     }
-// }
+bool pertenece(Arbol AB, item dato){
+    if (AB == NULL)
+    {
+        return false;
+    }else{
+        if (AB->raiz == dato){
+            return true;
+        }else{
+            return((pertenece(AB->izq, dato) || pertenece(AB->der, dato)));
+        }
+    }
+}
